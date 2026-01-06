@@ -3,11 +3,11 @@
  
 ### GROUP NAME HERE (CHANGE THIS!!!!!)
 
-Group Members Here (CHANGE THIS!!!!!)
+Matvei Karp
        
 ### Project Description:
 
-Explain what is this project. (CHANGE THIS!!!!!)
+Chatting platform
   
 ### Instructions:
 
