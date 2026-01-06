@@ -6,11 +6,11 @@ Matvei Karp
        
 # Intentions:
 
-A secure chat
+Multi-user chat
     
 # Intended usage:
 
-A description as to how the project will be used (describe the user interface). (CHANGE THIS!!!!!)
+Terminal based client, allowing user to send messages to the server and through it to all other users and allowing user to see all messages sent by others. Ideally with several "rooms"
   
 # Technical Details:
 
@@ -22,6 +22,9 @@ How you will be using the topics covered in class in the project.
      
 How you are breaking down the project and who is responsible for which parts.
   
+Processes (forking) + sockets for the server connection
+
+
     
 # Intended pacing:
 
