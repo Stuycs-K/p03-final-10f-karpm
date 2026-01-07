@@ -33,7 +33,8 @@ timeline:
         single room, main + room server combined in one, with the ability to connect to clients and share their messages
   
         sub stage 1: handshake - jan 8
-        sub stage 2: sharing messages - jan 11
+        sub stage 2: sharing messages - jan 10
+        sub stage 3: passable appearance - jan 12
             
     stage two:
         split main server from room server, introducing multi room system - jan 15
