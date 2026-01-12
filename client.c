@@ -12,7 +12,11 @@
 #include "networking.h"
 
 void clientLogic(int server_socket){
+char *msg = "Beej was here!";
+int len, bytes_sent;
 
+len = strlen(msg);
+bytes_sent = send(server_socket, msg, len, 0);
 }
 
 int main(int argc, char *argv[] ) {
@@ -22,6 +26,5 @@ int main(int argc, char *argv[] ) {
   }
   int server_socket = client_tcp_handshake(IP);
   printf("client connected.\n");
-  clientLogic(server_socket)
+  clientLogic(server_socket);
 }
-
