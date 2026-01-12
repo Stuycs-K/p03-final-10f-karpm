@@ -13,3 +13,10 @@ This document must be updated daily every time you finish a work session.
 ### 2026-01-08 - Started networking code, realised ive forgotten a lot over break
 40 min - began to copy over features from networking lab, trying to figure out what needs editing
 minor other work - realised i had forgotten to add some key files, added them
+
+### 2026-01-09 - Read stuff trying to figure it out
+40 min - reading, was still confused so not really any significant code.
+
+### 2026-01-12 - Continuing to figure out the contents of the lab 16 part of my project
+40 min - largely finally figure it out i think, now a bit to implement
+currently far behind plans
