@@ -4,8 +4,12 @@ This document must be updated daily every time you finish a work session.
 
 ## Matvei Karp
 
-### 2024-01-06 - Start of Proposal
+### 2026-01-06 - Start of Proposal
 40 Min - thought about variants of chat programs that could be made
 
-### 2024-01-07 - Continued Proposal, start of code
+### 2026-01-07 - Continued Proposal, start of code
 40 min - figured out the details about the room chat system, made the first two C files.
+
+### 2026-01-08 - Started networking code, realised ive forgotten a lot over break
+40 min - began to copy over features from networking lab, trying to figure out what needs editing
+minor other work - realised i had forgotten to add some key files, added them
