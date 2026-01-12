@@ -42,13 +42,13 @@ int server_tcp_handshake(int listen_socket){
 
     //accept() the client connection
 
-    
-    
+
+
     socklen_t sock_size;
     struct sockaddr_storage client_address;
     sock_size = sizeof(client_address);
     client_socket = accept(listen_socket,(struct sockaddr *)&client_address, &sock_size);
-    
+
     return client_socket;
 }
 
@@ -63,14 +63,14 @@ struct addrinfo * hints, * results;//results is allocated in getaddrinfo
 hints = calloc(1,sizeof(struct addrinfo));
 hints->ai_family = AF_INET;
 hints->ai_socktype = SOCK_STREAM; //TCP socket
-
+getaddrinfo(server_address, PORT, hints, &results);
   int serverd;//store the socket descriptor here
   //create the socket
 
   //connect() to the server
-int sd = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
+serverd = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
 
-connect(sd, results->ai_addr, results->ai_addrlen);
+connect(serverd, results->ai_addr, results->ai_addrlen);
   free(hints);
   freeaddrinfo(results);
 
