@@ -1,5 +1,4 @@
 #include "networking.h"
-
 /*Create and bind a socket.
 * Place the socket in a listening state.
 * returns the socket descriptor
@@ -8,7 +7,7 @@ int server_setup() {
   //setup structs for getaddrinfo
   struct addrinfo * hints;
   struct addrinfo * results;
-  hints = (addrinfo*) calloc(1,sizeof(struct addrinfo));
+  hints = (struct addrinfo*) calloc(1,sizeof(struct addrinfo));
   hints->ai_family = AF_INET;
   hints->ai_socktype = SOCK_STREAM;
   hints->ai_flags = AI_PASSIVE;
