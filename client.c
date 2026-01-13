@@ -16,6 +16,7 @@ char *msg = "Beej was here!";
 int len, bytes_sent;
 
 len = strlen(msg);
+printf("%d",len);
 bytes_sent = send(server_socket, msg, len, 0);
 }
 

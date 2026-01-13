@@ -20,3 +20,4 @@ minor other work - realised i had forgotten to add some key files, added them
 ### 2026-01-12 - Continuing to figure out the contents of the lab 16 part of my project
 40 min - largely finally figure it out i think, now a bit to implement
 currently far behind plans
+40 min - continuing to try to implement, running into bugs
