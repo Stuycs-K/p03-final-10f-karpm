@@ -14,6 +14,7 @@ void subserver_logic(int client_socket){
 void* buf = calloc(256, sizeof(char));
 int outcount;
 outcount = recv(client_socket, buf, 256, 0);
+printf("%s", buf);
 }
 
 int main(int argc, char *argv[] ) {
