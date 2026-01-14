@@ -16,7 +16,7 @@ client.o: client.c networking.h
 mainServer.o: mainServer.c networking.h
 	@gcc -c mainServer.c
 
-networking.o: networking.c
+networking.o: networking.c networking.h
 	@gcc -c networking.c
 
 clean:
