@@ -42,12 +42,12 @@ int server_tcp_handshake(int listen_socket){
     //accept() the client connection
 
 
-
     socklen_t sock_size;
     struct sockaddr_storage client_address;
     sock_size = sizeof(client_address);
+    printf("48\n");
     client_socket = accept(listen_socket,(struct sockaddr *)&client_address, &sock_size);
-
+    printf("line 50\n");
     return client_socket;
 }
 
@@ -59,7 +59,7 @@ int client_tcp_handshake(char * server_address) {
 
   //getaddrinfo
 struct addrinfo * hints, * results;//results is allocated in getaddrinfo
-hints = calloc(1,sizeof(struct addrinfo));
+hints = (struct addrinfo*) calloc(1,sizeof(struct addrinfo));
 hints->ai_family = AF_INET;
 hints->ai_socktype = SOCK_STREAM; //TCP socket
 getaddrinfo(server_address, PORT, hints, &results);
@@ -68,8 +68,7 @@ getaddrinfo(server_address, PORT, hints, &results);
 
   //connect() to the server
 serverd = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
-
-connect(serverd, results->ai_addr, results->ai_addrlen);
+err(connect(serverd, results->ai_addr, results->ai_addrlen), "meep");
   free(hints);
   freeaddrinfo(results);
 
