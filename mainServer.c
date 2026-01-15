@@ -16,14 +16,16 @@
 
 void subserver_logic(int client_socket){
 char* buf = (char*) calloc(256, sizeof(char));
-int outcount;
+int outcount, incount;
 while (1){
 outcount = recv(client_socket, buf, 255, 0);
-if(strcmp("exit", buf)){
-exit(0);
+if(!strcmp("exit", buf)){
+printf("exiting");
+break;
 }
 if(outcount){
   printf("%s\n", buf);
+  incount = send(client_socket, buf, outcount, 0);
 }
 }
 }
@@ -37,5 +39,6 @@ int main(int argc, char *argv[] ) {
   if(fork()==0){
   subserver_logic(client_socket);
   }
+
 //}
 }

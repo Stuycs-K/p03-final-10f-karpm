@@ -12,14 +12,33 @@
 #include "networking.h"
 
 void clientLogic(int server_socket){
+int pid = fork();
+if (!pid){
 char *msg = (char*) calloc(1024, sizeof(char));
-fgets(msg, 1023, stdin);
+while (1){
 int len, bytes_sent;
+fgets(msg, 1023, stdin);
 
 len = strlen(msg);
-printf("%d",len);
+*(msg+len-1)='\0';
+if (len){
 bytes_sent = send(server_socket, msg, len, 0);
-send(server_socket, "exit", 4, 0);
+}
+if (!strcmp("exit", msg)){
+  kill(pid, SIGQUIT);
+  break;
+}
+}
+}else{
+  char* buf = (char*) calloc(256, sizeof(char));
+  int outcount;
+  while (1){
+  outcount = recv(server_socket, buf, 255, 0);
+  if(outcount){
+    printf("%s\n", buf);
+  }
+  }
+}
 }
 
 int main(int argc, char *argv[] ) {
