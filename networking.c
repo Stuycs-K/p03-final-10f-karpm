@@ -21,7 +21,7 @@ int server_setup() {
   err(sockOpt,"sockopt  error");
 
   //bind the socket to address and port
-  bind(clientd, results->ai_addr, results->ai_addrlen);
+  err(bind(clientd, results->ai_addr, results->ai_addrlen), "weep");
   //set socket to listen state
   listen(clientd, 5);
 
