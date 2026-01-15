@@ -12,12 +12,14 @@
 #include "networking.h"
 
 void clientLogic(int server_socket){
-char *msg = "Beej was here!";
+char *msg = (char*) calloc(1024, sizeof(char));
+fgets(msg, 1023, stdin);
 int len, bytes_sent;
 
 len = strlen(msg);
 printf("%d",len);
 bytes_sent = send(server_socket, msg, len, 0);
+send(server_socket, "exit", 4, 0);
 }
 
 int main(int argc, char *argv[] ) {

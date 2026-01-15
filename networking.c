@@ -45,9 +45,7 @@ int server_tcp_handshake(int listen_socket){
     socklen_t sock_size;
     struct sockaddr_storage client_address;
     sock_size = sizeof(client_address);
-    printf("48\n");
     client_socket = accept(listen_socket,(struct sockaddr *)&client_address, &sock_size);
-    printf("line 50\n");
     return client_socket;
 }
 

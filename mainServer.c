@@ -19,20 +19,21 @@ char* buf = (char*) calloc(256, sizeof(char));
 int outcount;
 while (1){
 outcount = recv(client_socket, buf, 255, 0);
-printf("help me, obi wan %d\n", outcount);
-printf("%s\n", buf);
+if(strcmp("exit", buf)){
+exit(0);
+}
+if(outcount){
+  printf("%s\n", buf);
+}
 }
 }
 
 int main(int argc, char *argv[] ) {
 //  while (1){
-  printf("haaalp\n");
   int listen_socket = server_setup();
-  printf("line 25\n");
 
 
   int client_socket = server_tcp_handshake(listen_socket);
-  printf("handshook\n");
   if(fork()==0){
   subserver_logic(client_socket);
   }
