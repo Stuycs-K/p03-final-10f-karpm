@@ -14,10 +14,9 @@
 //}
 
 
-void subserver_logic(int client_socket){
+void reader_logic(int listen_socket, int client_socket, fd_set read_fds, int max){
 char* buf = (char*) calloc(256, sizeof(char));
 int outcount, incount;
-while (1){
 outcount = recv(client_socket, buf, 255, 0);
 if(!strcmp("exit", buf)){
 printf("exiting");
@@ -25,10 +24,14 @@ exit(0);
 }
 if(outcount){
   printf("%s\n", buf);
-  incount = send(client_socket, buf, outcount, 0);
+  for (int i = 0; i< max; i++){
+    if (FD_ISSET(i, &read_fds) && i!=client_socket && i!=listen_socket){
+  incount = send(i, buf, outcount, 0);
 }
 }
 }
+}
+
 
 int main(int argc, char *argv[] ) {
   int listen_socket = server_setup();
@@ -51,7 +54,7 @@ while(1){
 }else{
   for (int i = 0; i<= max_descriptor; i++){
     if (FD_ISSET(i, &temp_fds)){
-      subserver_logic(i);
+      reader_logic(listen_socket, i, read_fds, max_descriptor+1);
     }
   }
 }
