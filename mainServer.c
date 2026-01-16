@@ -13,27 +13,46 @@
 //
 //}
 
+void sigquit_handler(int signum) {
+    exit(0);
+}
 
-void reader_logic(int listen_socket, int client_socket, fd_set read_fds, int max){
-char* buf = (char*) calloc(256, sizeof(char));
+void reader_logic(int listen_socket, int client_socket, fd_set* fds, int max){
+fd_set read_fds = *fds;
+char* buf = (char*) calloc(1281, sizeof(char));
 int outcount, incount;
-outcount = recv(client_socket, buf, 255, 0);
-if(!strcmp("exit", buf)){
-printf("exiting");
+outcount = recv(client_socket, buf, 1280, 0);
+if(!strcmp("!exit", buf)){
+printf("exiting\n");
 exit(0);
 }
+
+    if (outcount <= 0) {
+        close(client_socket);
+        FD_CLR(client_socket, fds);
+        return;
+    }
+
 if(outcount){
   printf("%s\n", buf);
+  fflush(stdout);
   for (int i = 0; i< max; i++){
     if (FD_ISSET(i, &read_fds) && i!=client_socket && i!=listen_socket){
   incount = send(i, buf, outcount+1, 0);
 }
 }
 }
+if (strstr(buf, "\033[;31mLEFT CHAT")) {
+    printf("Client Left\n");
+    close(client_socket);
+    FD_CLR(client_socket, fds);
+}
+free(buf);
 }
 
 
 int main(int argc, char *argv[] ) {
+      signal(SIGQUIT, sigquit_handler);
   int listen_socket = server_setup();
   fd_set read_fds;
   FD_ZERO(&read_fds);
@@ -54,7 +73,7 @@ while(1){
 }else{
   for (int i = 0; i<= max_descriptor; i++){
     if (FD_ISSET(i, &temp_fds)){
-      reader_logic(listen_socket, i, read_fds, max_descriptor+1);
+      reader_logic(listen_socket, i, &read_fds, max_descriptor+1);
     }
   }
 }

@@ -32,3 +32,7 @@ currently far behind plans
 ### 2026-01-15 -  Client Server communications
 40 min - completed v1 of client-server communications, next step is to add multiple clients so that the echo can be redirected to others.
 30 min - implementing the basic select system so MVP is achieved.
+
+### 2025-01-16 - styling and error stuff
+40 min - styling client messages, adding usernames etc.
+20 min - setting up a graceful exit.
