@@ -36,3 +36,5 @@ currently far behind plans
 ### 2025-01-16 - styling and error stuff
 40 min - styling client messages, adding usernames etc.
 20 min - setting up a graceful exit.
+20 min - suffering over the video - zoom + hyprland = disaster.
+10 min - updating ReadMe

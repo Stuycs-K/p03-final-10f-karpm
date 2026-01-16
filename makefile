@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean compile
 
 compile: client.o mainServer.o networking.o
 	@gcc -o client client.o networking.o
