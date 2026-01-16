@@ -21,3 +21,13 @@ minor other work - realised i had forgotten to add some key files, added them
 40 min - largely finally figure it out i think, now a bit to implement
 currently far behind plans
 40 min - continuing to try to implement, running into bugs
+
+### 2026-01-13 - Even more figuring about
+40 min + 30 min - hunting after a bug, as it now works but server isnt receiving anything
+
+### 2026-01-14 - Finally figured things about
+40 min - fixing some issues with makefile, hunting down error codes
+40 min - realized that this whole time a big part of the error was incorrect testing procedure, implemented start of client - server communications
+
+### 2026-01-15 -  Client Server communications
+40 min - completed v1 of client-server communications, next step is to add multiple clients so that the echo can be redirected to others.
