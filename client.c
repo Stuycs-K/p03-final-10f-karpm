@@ -15,14 +15,35 @@ void clientLogic(int server_socket){
 int pid = fork();
 if (!pid){
 char *msg = (char*) calloc(1024, sizeof(char));
+char *usr = (char*) calloc(64, sizeof(char));
+printf("What should we call you? \n");
+while (1){
+  fgets(usr, 63, stdin);
+  int length = strlen(usr);
+  if (length){
+  *(usr+length-1)='\0';
+  break;
+}
+}
+printf("Connected to Chat\n");
+
 while (1){
 int len, bytes_sent;
 fgets(msg, 1023, stdin);
 
 len = strlen(msg);
 *(msg+len-1)='\0';
+char *fullmsg = (char*) calloc(1280,sizeof (char));
+strcpy(fullmsg, "\033[;34m");
+strcat(fullmsg, usr);
+strcat(fullmsg, "\033[m: \033[;93m");
+
 if (len){
-bytes_sent = send(server_socket, msg, len, 0);
+strcat(fullmsg, msg);
+strcat(fullmsg, "\033[m");
+len = strlen(fullmsg);
+*(fullmsg+len-1)='\0';
+bytes_sent = send(server_socket, fullmsg, len, 0);
 }
 if (!strcmp("exit", msg)){
   kill(pid, SIGQUIT);

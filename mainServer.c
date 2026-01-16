@@ -26,7 +26,7 @@ if(outcount){
   printf("%s\n", buf);
   for (int i = 0; i< max; i++){
     if (FD_ISSET(i, &read_fds) && i!=client_socket && i!=listen_socket){
-  incount = send(i, buf, outcount, 0);
+  incount = send(i, buf, outcount+1, 0);
 }
 }
 }
