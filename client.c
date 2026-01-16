@@ -46,7 +46,7 @@ strcat(fullmsg, "\033[m: \033[;93m");
 
 if (len){
   if (!strcmp("!exit", msg)){
-    bytes_sent = send(server_socket, "!exit", 5, 0);
+    err(bytes_sent = send(server_socket, "!exit", 5, 0),"49-client");
     free(fullmsg);
     free(msg);
     kill(pid, SIGQUIT);
@@ -59,7 +59,7 @@ if (len){
     strcat(fullmsg, "\033[m");
     len = strlen(fullmsg);
     *(fullmsg+len)='\0';
-    bytes_sent = send(server_socket, fullmsg, len, 0);
+    err(bytes_sent = send(server_socket, fullmsg, len, 0), "62-client");
     free(fullmsg);
     free(msg);
     kill(pid, SIGQUIT);
@@ -71,14 +71,14 @@ strcat(fullmsg, msg);
 strcat(fullmsg, "\033[m");
 len = strlen(fullmsg);
 *(fullmsg+len)='\0';
-bytes_sent = send(server_socket, fullmsg, len, 0);
+err(bytes_sent = send(server_socket, fullmsg, len, 0),"74-client");
 }
 }
 }else{
   char* buf = (char*) calloc(256, sizeof(char));
   int outcount;
   while (1){
-  outcount = recv(server_socket, buf, 1280, 0);
+  err(outcount = recv(server_socket, buf, 1280, 0), "81-client");
   if(outcount){
     printf("%s\n", buf);
     fflush(stdout);

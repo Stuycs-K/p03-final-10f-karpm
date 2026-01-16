@@ -21,7 +21,7 @@ int server_setup() {
   err(sockOpt,"sockopt  error");
 
   //bind the socket to address and port
-  err(bind(clientd, results->ai_addr, results->ai_addrlen), "weep");
+  err(bind(clientd, results->ai_addr, results->ai_addrlen), "24-networking");
   //set socket to listen state
   listen(clientd, 5);
 
@@ -45,7 +45,7 @@ int server_tcp_handshake(int listen_socket){
     socklen_t sock_size;
     struct sockaddr_storage client_address;
     sock_size = sizeof(client_address);
-    client_socket = accept(listen_socket,(struct sockaddr *)&client_address, &sock_size);
+    err(client_socket = accept(listen_socket,(struct sockaddr *)&client_address, &sock_size),"48-networking");
     return client_socket;
 }
 
@@ -66,7 +66,7 @@ getaddrinfo(server_address, PORT, hints, &results);
 
   //connect() to the server
 serverd = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
-err(connect(serverd, results->ai_addr, results->ai_addrlen), "meep");
+err(connect(serverd, results->ai_addr, results->ai_addrlen), "69-networking");
   free(hints);
   freeaddrinfo(results);
 

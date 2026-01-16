@@ -38,3 +38,4 @@ currently far behind plans
 20 min - setting up a graceful exit.
 20 min - suffering over the video - zoom + hyprland = disaster.
 10 min - updating ReadMe
+5 min - error updates

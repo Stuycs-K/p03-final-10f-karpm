@@ -21,7 +21,7 @@ void reader_logic(int listen_socket, int client_socket, fd_set* fds, int max){
 fd_set read_fds = *fds;
 char* buf = (char*) calloc(1281, sizeof(char));
 int outcount, incount;
-outcount = recv(client_socket, buf, 1280, 0);
+err(outcount = recv(client_socket, buf, 1280, 0),"24-mainServer");
 if(!strcmp("!exit", buf)){
 printf("exiting\n");
 exit(0);
@@ -38,7 +38,7 @@ if(outcount){
   fflush(stdout);
   for (int i = 0; i< max; i++){
     if (FD_ISSET(i, &read_fds) && i!=client_socket && i!=listen_socket){
-  incount = send(i, buf, outcount+1, 0);
+  (incount = send(i, buf, outcount+1, 0), "41-mainServer");
 }
 }
 }
